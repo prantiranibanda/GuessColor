@@ -52,12 +52,12 @@ export default function Home() {
       </div>
       <div className="flex justify-center p-8">
         {!show && <div className="grid grid-cols-3 gap-x-16 gap-y-8 bg-neutral-700 rounded-xl p-7">
-          <div onClick={()=>{check(c1)}} style={{backgroundColor : `${c1}`}} className={`${circle} cursor-pointer`}>{c1}</div>
-          <div onClick={()=>{check(c2)}} style={{backgroundColor : `${c2}`}} className={`${circle} cursor-pointer`}>{c2}</div>
-          <div onClick={()=>{check(c3)}} style={{backgroundColor : `${c3}`}} className={`${circle} cursor-pointer`}>{c3}</div>
-          <div onClick={()=>{check(c4)}} style={{backgroundColor : `${c4}`}} className={`${circle} cursor-pointer`}>{c4}</div>
-          <div onClick={()=>{check(c5)}} style={{backgroundColor : `${c5}`}} className={`${circle} cursor-pointer`}>{c5}</div>
-          <div onClick={()=>{check(c6)}} style={{backgroundColor : `${c6}`}} className={`${circle} cursor-pointer`}>{c6}</div>
+          <div onClick={()=>{check(c1)}} style={{backgroundColor : `${c1}`}} className={`${circle} cursor-pointer`}></div>
+          <div onClick={()=>{check(c2)}} style={{backgroundColor : `${c2}`}} className={`${circle} cursor-pointer`}></div>
+          <div onClick={()=>{check(c3)}} style={{backgroundColor : `${c3}`}} className={`${circle} cursor-pointer`}></div>
+          <div onClick={()=>{check(c4)}} style={{backgroundColor : `${c4}`}} className={`${circle} cursor-pointer`}></div>
+          <div onClick={()=>{check(c5)}} style={{backgroundColor : `${c5}`}} className={`${circle} cursor-pointer`}></div>
+          <div onClick={()=>{check(c6)}} style={{backgroundColor : `${c6}`}} className={`${circle} cursor-pointer`}></div>
         </div>}
         {show && ((c1 === generateColor) || (c2 === generateColor) || (c3 === generateColor) || (c4 === generateColor) || (c5 === generateColor) || (c6 === generateColor)) && <div>
           <div className="p-10 rounded-lg border-2 border-white text-lg font-semibold" style={{backgroundColor : `${generateColor}`}}>You Win</div>
