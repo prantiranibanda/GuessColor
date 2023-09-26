@@ -37,29 +37,31 @@ export default function Home() {
     setC5(hashCode);
     setC6(hashCode);
   }
-
+  const check = (c)=>{
+    if(generateColor !== ""){if(c === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")};
+  }
   return (
     <>
       <div className={`${grad1} h-20 p-6 text-center font-bold text-3xl italic text-white`}>Play With Colours</div>
       <div className={`text-white ${grad2} text-center p-3 mt-2 text-xl border-b-4 border-white`}>
-        <div className="">Click The Button Below OR Press Spacebar &</div>
-        <div className="font-bold text-2xl underline">Generate NEW {generateColor} Colors</div>
+        <div className="">Click The Button Below</div>
+        <div className="font-bold text-2xl">Generate new {generateColor} Colors</div>
       </div>
       <div className="flex justify-center">
-        <div className="w-52 mt-8 py-2 p-1 text-lg rounded-lg text-white border-2 border-emerald-400 hover:shadow-lg hover:shadow-emerald-400/50 font-semibold text-center cursor-pointer" onClick ={()=>{if(show === false) generateCol();}}>Random Color</div>
+        <div className="w-52 mt-8 py-2 p-1 text-lg rounded-lg text-white border-2 border-emerald-400 hover:shadow-lg hover:shadow-emerald-400/50 font-semibold text-center cursor-pointer" onClick ={()=>{if(show === false) generateCol();}}>Generate Color</div>
       </div>
       <div className="flex justify-center p-8">
         {!show && <div className="grid grid-cols-3 gap-x-16 gap-y-8 bg-neutral-700 rounded-xl p-7">
-          <div onClick={()=>{if(generateColor !== ""){if(c1 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c1}`}} className={`${circle} cursor-pointer`}>{c1}</div>
-          <div onClick={()=>{if(generateColor !== ""){if(c2 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c2}`}} className={`${circle} cursor-pointer`}>{c2}</div>
-          <div onClick={()=>{if(generateColor !== ""){if(c3 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c3}`}} className={`${circle} cursor-pointer`}>{c3}</div>
-          <div onClick={()=>{if(generateColor !== ""){if(c4 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c4}`}} className={`${circle} cursor-pointer`}>{c4}</div>
-          <div onClick={()=>{if(generateColor !== ""){if(c5 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c5}`}} className={`${circle} cursor-pointer`}>{c5}</div>
-          <div onClick={()=>{if(generateColor !== ""){if(c6 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c6}`}} className={`${circle} cursor-pointer`}>{c6}</div>
+          <div onClick={()=>{check(c1)}} style={{backgroundColor : `${c1}`}} className={`${circle} cursor-pointer`}>{c1}</div>
+          <div onClick={()=>{check(c2)}} style={{backgroundColor : `${c2}`}} className={`${circle} cursor-pointer`}>{c2}</div>
+          <div onClick={()=>{check(c3)}} style={{backgroundColor : `${c3}`}} className={`${circle} cursor-pointer`}>{c3}</div>
+          <div onClick={()=>{check(c4)}} style={{backgroundColor : `${c4}`}} className={`${circle} cursor-pointer`}>{c4}</div>
+          <div onClick={()=>{check(c5)}} style={{backgroundColor : `${c5}`}} className={`${circle} cursor-pointer`}>{c5}</div>
+          <div onClick={()=>{check(c6)}} style={{backgroundColor : `${c6}`}} className={`${circle} cursor-pointer`}>{c6}</div>
         </div>}
         {show && ((c1 === generateColor) || (c2 === generateColor) || (c3 === generateColor) || (c4 === generateColor) || (c5 === generateColor) || (c6 === generateColor)) && <div>
           <div className="p-10 rounded-lg border-2 border-white text-lg font-semibold" style={{backgroundColor : `${generateColor}`}}>You Win</div>
-          <div onClick={()=>{setShow(false);setC1("");setC2("");setC3("");setC4("");setC5("");setC6("");setGenerateColor("");}} className="text-center text-white text-lg font-semibold px-4 py-2 border-2 border-blue-400 hover:shadow-lg hover:shadow-blue-400/50 rounded-lg mt-10">End game</div>
+          <div onClick={()=>{setShow(false);setC1("");setC2("");setC3("");setC4("");setC5("");setC6("");setGenerateColor("");}} className="text-center text-white text-lg font-semibold px-4 py-2 border-2 border-blue-400 hover:shadow-lg hover:shadow-blue-400/50 rounded-lg mt-10 cursor-pointer">Restart game</div>
           </div>
         }
       </div>
