@@ -2,13 +2,15 @@
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [generateColor, setGenerateColor] = useState("#FFFFFF");
-  const [c1, setC1] = useState("#FFFFFF");
-  const [c2, setC2] = useState("#FFFFFF");
-  const [c3, setC3] = useState("#FFFFFF");
-  const [c4, setC4] = useState("#FFFFFF");
-  const [c5, setC5] = useState("#FFFFFF");
-  const [c6, setC6] = useState("#FFFFFF");
+  const [generateColor, setGenerateColor] = useState("");
+  const [c1, setC1] = useState("");
+  const [c2, setC2] = useState("");
+  const [c3, setC3] = useState("");
+  const [c4, setC4] = useState("");
+  const [c5, setC5] = useState("");
+  const [c6, setC6] = useState("");
+  const [show, setShow] = useState(false);
+  
 
   const generate = ()=>{
     let arr = [c1, c2, c3, c4, c5, c6];
@@ -39,20 +41,27 @@ export default function Home() {
   return (
     <>
       <div className={`${grad1} h-20 p-6 text-center font-bold text-3xl italic text-white`}>Play With Colours</div>
-      <div className={`text-white ${grad2} text-center p-3 mt-2 text-xl`}>
+      <div className={`text-white ${grad2} text-center p-3 mt-2 text-xl border-b-4 border-white`}>
         <div className="">Click The Button Below OR Press Spacebar &</div>
         <div className="font-bold text-2xl underline">Generate NEW {generateColor} Colors</div>
       </div>
-      <div className="bg-white p-1 font-medium text-center hover:underline cursor-pointer" onClick ={generateCol}>Random Color</div>
-      <div className="flex justify-center p-16">
-        <div className="grid grid-cols-3 gap-x-16 gap-y-8 bg-neutral-700 rounded-xl p-7">
-          <div style={{backgroundColor : `${c1}`}} className={`${circle}`}>{c1}</div>
-          <div style={{backgroundColor : `${c2}`}} className={`${circle}`}>{c2}</div>
-          <div style={{backgroundColor : `${c3}`}} className={`${circle}`}>{c3}</div>
-          <div style={{backgroundColor : `${c4}`}} className={`${circle}`}>{c4}</div>
-          <div style={{backgroundColor : `${c5}`}} className={`${circle}`}>{c5}</div>
-          <div style={{backgroundColor : `${c6}`}} className={`${circle}`}>{c6}</div>
-        </div>
+      <div className="flex justify-center">
+        <div className="w-52 mt-8 py-2 p-1 text-lg rounded-lg text-white border-2 border-emerald-400 hover:shadow-lg hover:shadow-emerald-400/50 font-semibold text-center cursor-pointer" onClick ={()=>{if(show === false) generateCol();}}>Random Color</div>
+      </div>
+      <div className="flex justify-center p-8">
+        {!show && <div className="grid grid-cols-3 gap-x-16 gap-y-8 bg-neutral-700 rounded-xl p-7">
+          <div onClick={()=>{if(generateColor !== ""){if(c1 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c1}`}} className={`${circle} cursor-pointer`}>{c1}</div>
+          <div onClick={()=>{if(generateColor !== ""){if(c2 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c2}`}} className={`${circle} cursor-pointer`}>{c2}</div>
+          <div onClick={()=>{if(generateColor !== ""){if(c3 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c3}`}} className={`${circle} cursor-pointer`}>{c3}</div>
+          <div onClick={()=>{if(generateColor !== ""){if(c4 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c4}`}} className={`${circle} cursor-pointer`}>{c4}</div>
+          <div onClick={()=>{if(generateColor !== ""){if(c5 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c5}`}} className={`${circle} cursor-pointer`}>{c5}</div>
+          <div onClick={()=>{if(generateColor !== ""){if(c6 === generateColor) {alert("You WIN !!"); setShow(true);} else alert("You LOOSE")} else{alert("Gererate the color first !!")}}} style={{backgroundColor : `${c6}`}} className={`${circle} cursor-pointer`}>{c6}</div>
+        </div>}
+        {show && ((c1 === generateColor) || (c2 === generateColor) || (c3 === generateColor) || (c4 === generateColor) || (c5 === generateColor) || (c6 === generateColor)) && <div>
+          <div className="p-10 rounded-lg border-2 border-white text-lg font-semibold" style={{backgroundColor : `${generateColor}`}}>You Win</div>
+          <div onClick={()=>{setShow(false);setC1("");setC2("");setC3("");setC4("");setC5("");setC6("");setGenerateColor("");}} className="text-center text-white text-lg font-semibold px-4 py-2 border-2 border-blue-400 hover:shadow-lg hover:shadow-blue-400/50 rounded-lg mt-10">End game</div>
+          </div>
+        }
       </div>
       <div className="fixed bottom-0 bg-zinc-700 p-4 w-full text-center text-neutral-500">Copyright</div>
     </>
